@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="quote.css"></link>
+    <script type="text/javascript" src="jquery.js"></script>
+
+
+    
+<body>
+  <div class="container-fluid">
+     <div class="text-center" id="top">
+        <h2>Random Quotes</h2>
+        <div id="changeMe">
+          <p>Quotes</p>
+        </div>
+       <a id="quoteBut" class="btn btn-primary">Get Quote</a>
+     </div>
+  </div>
+</body>
+
+</html>
+
+<script>
+
+var getQuote = function() {
+  $.ajax({
+    url: 'http://api.icndb.com/jokes/random?firstName=Daniel&amp&lastName=Tam',
+    //type: 'GET',
+    //contentType: 'application/json',
+    //dataType: 'json',
+    success: function(data) {
+      $('#changeMe').html(data.value.joke);
+    }
+  });
+}
+
+$(document).ready(function() {
+  // get a random quote when page loads
+  getQuote();
+  $('#quoteBut').on('click', function(){
+    getQuote();
+  });
+});
+</script>
