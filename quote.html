@@ -35,11 +35,10 @@ var getQuote = function() {
   });
 }
 
-$(document).ready(function() {
   // get a random quote when page loads
   getQuote();
   $('#quoteBut').on('click', function(){
     getQuote();
   });
-});
+
 </script>
